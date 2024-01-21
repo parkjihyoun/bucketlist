@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2024 나만의 신년계획</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
+       * {
+            font-family: "Noto Sans KR", serif;
+    
+        }
+
+        .bg {
+            background-image: url('https://s3.ap-northeast-2.amazonaws.com/materials.spartacodingclub.kr/bucketList/bg-grid.png');
+            background-position: center;
+            background-size: cover;
+            margin: auto;
+            width: 360px;
+        }
+
+        .title{
+            background-color: tomato;
+            border-radius: 10px;
+            color: white;
+            text-align: center;
+            padding: 4px 14px;
+
+
+        }
+
+        .bucket {
+            width : 160px;
+            height : 160px;
+            background-position: center;
+            background-size: cover;
+
+        }
+        .img1 {
+            background-image: url('https://s3.ap-northeast-2.amazonaws.com/materials.spartacodingclub.kr/bucketList/bucket-red.png');
+        }
+        .img2 {
+            background-image: url('https://s3.ap-northeast-2.amazonaws.com/materials.spartacodingclub.kr/bucketList/bucket-lightred.png')
+        }
+
+    </style>
+    <link rel="stylesheet" type="text/css" href="https://s3.ap-northeast-2.amazonaws.com/materials.spartacodingclub.kr/bucketList/sparta-bucket2.css">
+
+</head>
+<body class="bg-t3 center">
+  <h1 class="title-t3">지현's 2024 버킷리스트</h1>
+  <p class="msg center">올해 안에 무조건 다 달성하기</p>
+  <p class="msg center">화이띵 !</p>
+  <div class="flex-row wrap">
+    <div class="bucket img1-t5 center">외국어 하나 배우기</div>
+    <div class="bucket img2-t5 center">학점 올리기</div>
+    <div class="bucket img2-t5 center">책 읽기</div>
+    <div class="bucket img1-t5 center">토익 900점 넘기</div> 
+    <div class="bucket img1-t5 center">운동 꾸준히 해서 다이어트 성공하기</div>
+    <div class="bucket img2-t5 center">일기 꾸준히 쓰기</div>
+  </div>
+  <script>
+    // 페이지 로드 시 이전 상태 복원
+    document.addEventListener("DOMContentLoaded", (event) => {
+      const buckets = document.querySelectorAll(".bucket");
+      buckets.forEach((bucket, index) => {
+        // 로컬 스토리지에서 상태 읽기
+        const isDone = localStorage.getItem("bucket" + index) === "done";
+        if (isDone) {
+          bucket.classList.add("done");
+        }
+      });
+    });
+
+    // 버킷 리스트 클릭 이벤트
+    const buckets = document.querySelectorAll(".bucket");
+    buckets.forEach((bucket, index) => {
+      bucket.addEventListener("click", function () {
+        // 클래스 토글
+        bucket.classList.toggle("done");
+
+        // 로컬 스토리지에 상태 저장
+        if (bucket.classList.contains("done")) {
+          localStorage.setItem("bucket" + index, "done");
+        } else {
+          localStorage.setItem("bucket" + index, "");
+        }
+      });
+    });
+  </script>
+</body>
+</html>
